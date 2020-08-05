@@ -2,4 +2,4 @@
 const router = require("express").Router();
 
 
-module.exports = route
+module.exports = router;
