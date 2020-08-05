@@ -1,4 +1,4 @@
-# <div align="center">**DEATH ROLL**</div>
+# <div align="center">**Application Tracker**</div>
 
 ## **PROJECT DESCRIPTION**
 You and your group will use everything you’ve learned over the past six weeks to create a full-stack application that works with real-world data to solve a real-world challenge. Even more than your first group project, this project will provide you with an opportunity to demonstrate your problem-solving skills, which employers will want to see when you begin to interview for development roles. Once again, the user story and acceptance criteria will depend on the project that you create, but your project must fulfill some specific requirements. Full project and presentation requirements are detailed below.  
