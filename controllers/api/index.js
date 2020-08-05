@@ -1,6 +1,5 @@
-const { route } = require("../home-routes");
-
+//================[Dependencies]====================/
 const router = require("express").Router();
 
 
-module.exports = router;
+module.exports = route
