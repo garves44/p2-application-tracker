@@ -23,9 +23,12 @@ const PORT = process.env.MYSQL_PORT || 3001;
 //================[Middleware]====================/
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 app.use(session(sess));
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.resolve(__dirname, "views/build")));
+};
 
 
 // force is set to false/true depending on if your set to development
