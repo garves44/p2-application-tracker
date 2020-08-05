@@ -17,7 +17,7 @@ const sess = {
 };
 
 const app = express();
-const PORT = process.env.MYSQL_PORT || 3001;
+const API_PORT = process.env.MYSQL_API_PORT || 3001;
 
 
 //================[Middleware]====================/
@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === "development") {
 
 // app listening
 sequelize.sync(syncOptions).then(() => {
-    app.listen(PORT, () => {
-        console.log(`App is listening on port ${PORT}!`);
+    app.listen(API_PORT, () => {
+        console.log(`Api is listening on port ${API_PORT}!`);
     });
 });
