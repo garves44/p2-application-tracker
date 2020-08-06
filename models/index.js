@@ -5,10 +5,17 @@ const Resume = require('./Resume');
 
 
 //================[Associations]=================/
+Interviews.belongsTo(Jobs, {
+    foreignKey: {
+        key: ""
+    }
+})
 
 
 
 
 module.exports = {
-    Jobs
+    Jobs,
+    Interviews,
+    Resume
 };
