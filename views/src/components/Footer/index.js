@@ -1,13 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+//FontAwesome imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faCopyright } from "@fortawesome/free-solid-svg-icons";
+import { faCopyright } from "@fortawesome/free-regular-svg-icons";
+
+// Styled Components
 import {
   StyledNavbar,
-  StyledNavBrand,
   StyledNavItems,
   StyledLink,
+  StyledAnchor,
 } from "../../styled/Navbar";
 
 const Footer = () => {
@@ -18,23 +21,27 @@ const Footer = () => {
           <StyledNavItems className="bottom-nav">
             <li>
               <StyledLink to="/">
-                Copyright <FontAwesomeIcon icon={faCopyright} size="2x" /> 2020
+                Copyright <FontAwesomeIcon icon={faCopyright} size="1.5x" />{" "}
+                {new Date().getFullYear()}
               </StyledLink>
             </li>
             <li>
-              <StyledLink to="https://www.linkedin.com/in/jeremy-collins-209545194/">
+              <StyledAnchor
+                href="https://www.linkedin.com/in/jeremy-collins-209545194/"
+                target="_blank"
+              >
                 <FontAwesomeIcon icon={faLinkedin} size="2x" /> Jeremy Collins
-              </StyledLink>
+              </StyledAnchor>
             </li>
             <li>
-              <StyledLink to="/">
+              <StyledAnchor href="https://www.linkedin.com/in/" target="_blank">
                 <FontAwesomeIcon icon={faLinkedin} size="2x" /> Taylor Remigi
-              </StyledLink>
+              </StyledAnchor>
             </li>
             <li>
-              <StyledLink to="/">
+              <StyledAnchor href="https://www.linkedin.com/in/" target="_blank">
                 <FontAwesomeIcon icon={faLinkedin} size="2x" /> Mario Dubon
-              </StyledLink>
+              </StyledAnchor>
             </li>
           </StyledNavItems>
         </div>

@@ -32,3 +32,13 @@ export const StyledLink = styled(Link)`
     color: var(--accent-color);
   }
 `;
+
+export const StyledAnchor = styled.a`
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 200ms;
+
+  &:hover {
+    color: var(--accent-color);
+  }
+`;
