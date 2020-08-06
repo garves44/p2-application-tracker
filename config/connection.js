@@ -16,7 +16,7 @@ const sequelize = process.env.JAWSDB_URL ?
 sequelize
     .authenticate()
     .then(() => {
-        console.log("Connection has been established successfully.");
+        console.log("Connection to MySQL has been established successfully.");
     })
     .catch((err) => {
         console.error("Unable to connect to the database:", err);

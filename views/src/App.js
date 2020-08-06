@@ -2,8 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 
+
 // Styling
 import { GlobalStyle } from "./styled/Global";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -18,11 +20,13 @@ function App() {
       <GlobalStyle />
       <div className="App">
         <Header />
+
         <Switch>
           <Route exact path="/" component={Home} />
-
           <Route path="*" component={notFound} />
+          
         </Switch>
+
         <Footer />
       </div>
     </Router>
