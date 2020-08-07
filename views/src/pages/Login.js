@@ -1,73 +1,87 @@
 import React from "react";
+import { observer } from "mobx-react";
+import UserStore from "../store/UserStore";
+import LoginForm from "../components/LoginForm";
+import SubmitButton from "../components/SubmitButton";
 
-const Login = () => {
-  return (
-    <div>
-      <form>
-        <div className="form-group row">
-          <label className="col-sm-4 form-label" htmlFor="username">
-            Email:
-          </label>
-          <div className="col-sm-8 input-group">
-            {/* <input
-              className="form-input"
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Username"
-              // // value={loginForm.username}
-              // // onChange={(event) => {
-              // //   const { name, value } = event.target;
-              // //   setLoginForm((prevState) => ({
-              // //     ...prevState,
-              //     [name]: value,
-              //   }));
-              // }}
-              onKeyUp={() => validateForm()}
-            /> */}
-          </div>
-        </div>
-        <div className="form-group row">
-          <label className="col-sm-4 form-label" htmlFor="password">
-            Password:{" "}
-          </label>
-          <div className="col-sm-8 input-group">
-            {/* <input
-              className="form-input"
-              name="password"
-              type="password"
-              placeholder="password"
-              value={loginForm.password}
-              onChange={(event) => {
-                const { name, value } = event.target;
-                setLoginForm((prevState) => ({
-                  ...prevState,
-                  [name]: value,
-                }));
-              }}
-              onKeyUp={() => validateForm()}
-            /> */}
-          </div>
-        </div>
-        <div className="form-group row">
-          <span className="col-sm-12 input-group-btn text-right">
-            {/* <button
-              className="btn btn-dark form-input"
-              onClick={(e) => {
-                e.preventDefault();
-                if (loginForm.validate_form) {
-                  handleLoginSubmit(loginForm);
-                }
-              }}
-              type="submit"
-            >
-              <FontAwesomeIcon icon={faUser} /> Login
-            </button> */}
-          </span>
-        </div>
-      </form>
-    </div>
-  );
-};
+class Login extends React.Component {
+  //Logging IN Function
+  async componentDidMount() {
+    try {
+      let res = await fetch("/isLoggedIn", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      let result = await res.json();
 
-export default Login;
+      if (result && result.success) {
+        UserStore.loading = false;
+        UserStore.isLoggedIn = true;
+        UserStore.username = result.username;
+      } else {
+        UserStore.loading = false;
+        UserStore.isLoggedIn = false;
+      }
+    } catch (e) {
+      UserStore.loading = false;
+      UserStore.isLoggedIn = false;
+    }
+  }
+
+  //Logging OUT function
+  async doLogout() {
+    try {
+      let res = await fetch("/logout", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      let result = await res.json();
+
+      if (result && result.success) {
+        UserStore.isLoggedIn = false;
+        UserStore.username = "";
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  render() {
+    if (UserStore.loading) {
+      return (
+        <div className="login">
+          <div className="container">Loading please wait...</div>
+        </div>
+      );
+    } else {
+      if (UserStore.isLoggedIn) {
+        return (
+          <div className="login">
+            <div className="container">
+              Welcome {UserStore.username}
+              <SubmitButton
+                text={"Logout"}
+                disabled={false}
+                onClick={() => this.doLogout()}
+              />
+            </div>
+          </div>
+        );
+      }
+    }
+    return (
+      <div className="login">
+        <div className="container">
+          <LoginForm />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default observer(Login);
