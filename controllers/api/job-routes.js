@@ -6,6 +6,7 @@ const {
     Interviews
 } = require("../../models");
 
+// GET all jobs
 router.get('/', (req, res) => {
     Jobs.findAll({
         attributes: ['id', 'jobs_name', 'applied'],
@@ -26,6 +27,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET single job
 router.get('/:id', (req, res) => {
     Jobs.findOne({
         where: {
@@ -57,6 +59,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// POST new job
 router.post('/', (req, res) => {
     Jobs.create({
         jobs_name: req.body.jobs_name
@@ -68,6 +71,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// PUT job (expects jobs_name and applied, can send original name in body to update applied status)
 router.put('/:id', (req, res) => {
     Jobs.update({
         jobs_name: req.body.jobs_name,
@@ -93,6 +97,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// DELETE job
 router.delete('/:id', (req, res) => {
     Jobs.destroy({
         where: {
