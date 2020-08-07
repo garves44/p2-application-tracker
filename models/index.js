@@ -13,7 +13,6 @@ Interviews.belongsTo(Jobs, {
 
 
 
-
 module.exports = {
     Jobs,
     Interviews,
