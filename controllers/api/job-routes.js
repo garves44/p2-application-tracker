@@ -1,21 +1,24 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const {
-    Jobs,
+    Job,
     Resume,
-    Interviews
+    Interview
 } = require("../../models");
+const JobResume = require("../../models/JobResume");
 
-// GET all jobs
+// GET all Jobs
 router.get('/', (req, res) => {
-    Jobs.findAll({
-        attributes: ['id', 'jobs_name', 'applied'],
+    Job.findAll({
+        attributes: ['id', 'job_name', 'applied'],
         include: [{
                 model: Resume,
-                attributes: ['resume_name']
+                attributes: ['resume_name'],
+                through: JobResume,
+                as: 'resume'
             },
             {
-                model: Interviews,
+                model: Interview,
                 attributes: ['interview_date']
             }
         ]
@@ -29,11 +32,11 @@ router.get('/', (req, res) => {
 
 // GET single job
 router.get('/:id', (req, res) => {
-    Jobs.findOne({
+    Job.findOne({
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'jobs_name', 'applied'],
+        attributes: ['id', 'job_name', 'applied'],
         include: [{
                 model: Resume,
                 attributes: ['resume_name']
@@ -61,8 +64,8 @@ router.get('/:id', (req, res) => {
 
 // POST new job
 router.post('/', (req, res) => {
-    Jobs.create({
-        jobs_name: req.body.jobs_name
+    Job.create({
+        job_name: req.body.job_name
     })
     .then(dbJobData => res.json(dbJobData))
     .catch(err => {
@@ -71,10 +74,10 @@ router.post('/', (req, res) => {
     });
 });
 
-// PUT job (expects jobs_name and applied, can send original name in body to update applied status)
+// PUT job (expects job_name and applied, can send original name in body to update applied status)
 router.put('/:id', (req, res) => {
-    Jobs.update({
-        jobs_name: req.body.jobs_name,
+    Job.update({
+        job_name: req.body.job_name,
         applied: req.body.applied
     },
     {
@@ -99,7 +102,7 @@ router.put('/:id', (req, res) => {
 
 // DELETE job
 router.delete('/:id', (req, res) => {
-    Jobs.destroy({
+    Job.destroy({
         where: {
             id: req.params.id
         }

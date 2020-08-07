@@ -16,19 +16,9 @@ Resume.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        jobs_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "Jobs",
-                key: "id"
-            },
-        },
-        interviews_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "Interviews",
-                key: "id"
-            }
+        resume_link: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {

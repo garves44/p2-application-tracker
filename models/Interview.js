@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Interviews extends Model {};
+class Interview extends Model {};
 
 const sequelize = require("../config/connection");
 
-Interviews.init(
+Interview.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -13,24 +13,21 @@ Interviews.init(
             autoIncrement: true
         },
         interview_date: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        jobs_id: {
+        job_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: "Jobs",
-                key: "id"
-            },
-        },
+            allowNull: false
+        }
     },
     {
         sequelize,
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: "interviews"
+        modelName: "interview"
     }
 );
 
-module.exports = Interviews
+module.exports = Interview
