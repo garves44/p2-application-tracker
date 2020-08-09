@@ -17,6 +17,12 @@ export default function Header() {
         <li>
           <StyledLink to="/">Home</StyledLink>
         </li>
+        <li>
+          <StyledLink to="/login">Login</StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/contact">Contact</StyledLink>
+        </li>
       </StyledNavItems>
     </StyledNavbar>
   );
