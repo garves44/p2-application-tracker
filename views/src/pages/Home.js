@@ -13,7 +13,7 @@ const Home = () => {
                   {" "}
                   05/28/2020
                 </span>
-                <p className="m-1">Sample task to do</p>
+                <p className="m-1">Sample task to do!</p>
               </li>
             </ul>
           </div>
