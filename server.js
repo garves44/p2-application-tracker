@@ -17,7 +17,7 @@ const sess = {
 };
 
 const app = express();
-const API_PORT = process.env.MYSQL_API_PORT || 3001;
+const API_PORT = process.env.MYSQL_API_PORT || process.env.PORT || 3001;
 
 //================[Middleware]====================/
 app.use(express.json());
