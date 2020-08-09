@@ -4,16 +4,6 @@ import ContactForm from "../components/ContactForm";
 import Content from "../components/Content";
 
 class Contact extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      message: "",
-      disabled: false,
-      emailSent: null,
-    };
-  }
   render() {
     return (
       <div>
