@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const sequelize = require("../config/connection");
+const sequelize = require("../../config/connection");
 const {
     Job,
     Resume,
-    Interview
+    Interview,
+    Application
 } = require("../../models");
-const JobResume = require("../../models/JobResume");
 
 // GET all Jobs
 router.get('/', (req, res) => {
@@ -13,13 +13,13 @@ router.get('/', (req, res) => {
         attributes: ['id', 'job_name', 'applied'],
         include: [{
                 model: Resume,
-                attributes: ['resume_name'],
-                through: JobResume,
+                attributes: ['id', 'resume_name', 'resume_link'],
                 as: 'resume'
             },
             {
                 model: Interview,
-                attributes: ['interview_date']
+                attributes: ['id', 'interview_date'],
+                as: 'interview'
             }
         ]
     })
@@ -39,11 +39,13 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'job_name', 'applied'],
         include: [{
                 model: Resume,
-                attributes: ['resume_name']
+                attributes: ['id', 'resume_name', 'resume_link'],
+                as: 'resume'
             },
             {
-                model: Interviews,
-                attributes: ['interview_date']
+                model: Interview,
+                attributes: ['id', 'interview_date'],
+                as: 'interview'
             }
         ]
     })
@@ -74,11 +76,10 @@ router.post('/', (req, res) => {
     });
 });
 
-// PUT job (expects job_name and applied, can send original name in body to update applied status)
+// PUT job
 router.put('/:id', (req, res) => {
     Job.update({
-        job_name: req.body.job_name,
-        applied: req.body.applied
+        job_name: req.body.job_name
     },
     {
         where: {
@@ -86,7 +87,7 @@ router.put('/:id', (req, res) => {
         }
     })
     .then(dbJobData => {
-        if(!dbPostData) {
+        if(!dbJobData) {
             res.status(404).json({
                 message: 'No job found with this id'
             });
@@ -94,6 +95,23 @@ router.put('/:id', (req, res) => {
         }
         res.json(dbJobData);
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+// Add resume to job
+router.put('/:id/resume', (req, res) => {
+    Job.update({
+        resume_id: req.body.resume_id
+    },
+    {
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbJobData => res.json(dbJobData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);

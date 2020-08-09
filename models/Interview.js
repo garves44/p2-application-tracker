@@ -13,17 +13,13 @@ Interview.init(
             autoIncrement: true
         },
         interview_date: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        job_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         }
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: "interview"

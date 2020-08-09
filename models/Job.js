@@ -15,11 +15,16 @@ Job.init(
         job_name: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        applied: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         }
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: "job"
