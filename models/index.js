@@ -1,17 +1,31 @@
 //================[Models]====================/
-const Jobs = require("./Jobs");
-const Interviews = require("./Interviews");
+const Job = require("./Job");
+const Interview = require("./Interview");
 const Resume = require("./Resume");
+const Application = require("./Application");
 
 //================[Associations]=================/
-Interviews.belongsTo(Jobs, {
-  foreignKey: {
-    key: ""
-  }
+// Resume.belongsToMany(Job, {
+//   through: Application,
+//   foreignKey: 'resume_id',
+//   otherKey: 'job_id'
+// });
+
+Job.belongsTo(Resume);
+
+Resume.hasMany(Job, {
+  foreignKey: 'resume_id'
+});
+
+Interview.belongsTo(Job);
+
+Job.hasOne(Interview, {
+  foreignKey: 'job_id'
 });
 
 module.exports = {
-  Jobs,
-  Interviews,
+  Job,
+  Interview,
   Resume,
+  Application
 };

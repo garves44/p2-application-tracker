@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Interviews extends Model {};
+class Job extends Model {};
 
 const sequelize = require("../config/connection");
 
-Interviews.init(
+Job.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,25 +12,23 @@ Interviews.init(
             primaryKey: true,
             autoIncrement: true
         },
-        interview_date: {
-            type: DataTypes.NUMBER,
+        job_name: {
+            type: DataTypes.STRING,
             allowNull: false
         },
-        jobs_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "Jobs",
-                key: "id"
-            },
-        },
+        applied: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        }
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "interviews"
+        modelName: "job"
     }
 );
 
-module.exports = Interviews
+module.exports = Job
