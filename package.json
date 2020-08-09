@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
+    "start:prod": "concurrently \"nodemon --ignore 'views/*'\" \"npm run client\"",
     "start:dev": "concurrently \"nodemon --ignore 'views/*'\" \"npm run client\"",
     "client": "cd views && npm run start",
     "install": "cd views && npm install",
@@ -25,10 +25,12 @@
   "homepage": "https://github.com/garves44/p2-application-tracker#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "concurrently": "^5.3.0",
     "connect-session-sequelize": "^7.0.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-mysql-session": "^2.1.4",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "mysql2": "^2.1.0",
