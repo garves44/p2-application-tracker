@@ -32,7 +32,7 @@ Application.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'job_resume',
+    modelName: 'application',
   }
 );
 
