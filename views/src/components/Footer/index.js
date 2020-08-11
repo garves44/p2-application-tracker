@@ -17,7 +17,7 @@ const Footer = () => {
   return (
     <footer className="main-footer" id="main-footer">
       <StyledNavbar className="footer-nav">
-        <div className="container clearfix">
+        <div className="clearfix">
           <StyledNavItems className="bottom-nav">
             <li>
               <StyledLink to="/">

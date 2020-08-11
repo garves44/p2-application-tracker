@@ -29,9 +29,9 @@ function App() {
   return (
     <Router>
       <GlobalStyle />
-      <div className="App">
-        <Header />
+      <Header />
 
+      <div className="container">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
@@ -41,9 +41,9 @@ function App() {
 
           <Route path="*" component={notFound} />
         </Switch>
-
-        <Footer />
       </div>
+
+      <Footer />
     </Router>
   );
 }
