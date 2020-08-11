@@ -9,21 +9,23 @@ import {
 
 export default function Header() {
   return (
-    <StyledNavbar>
-      <StyledNavBrand>
-        <StyledLink to="/">Job Application Tracker</StyledLink>
-      </StyledNavBrand>
-      <StyledNavItems>
-        <li>
-          <StyledLink to="/">Home</StyledLink>
-        </li>
-        <li>
-          <StyledLink to="/login">Login</StyledLink>
-        </li>
-        <li>
-          <StyledLink to="/contact">Contact</StyledLink>
-        </li>
-      </StyledNavItems>
-    </StyledNavbar>
+    <div className="main-header">
+      <StyledNavbar>
+        <StyledNavBrand>
+          <StyledLink to="/">Job Application Tracker</StyledLink>
+        </StyledNavBrand>
+        <StyledNavItems>
+          <li>
+            <StyledLink to="/">Home</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/login">Login</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/contact">Contact</StyledLink>
+          </li>
+        </StyledNavItems>
+      </StyledNavbar>
+    </div>
   );
 }

@@ -3,27 +3,27 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 :root {
-    --main-bg-color: #f9f9f9
+    --main-bg-color: #b3cde0
 }
 
 body {
     background-color: var(--main-bg-color)
 }
 
-body, html, #root, .app, .container {
+body, html, #root, .app, {
     width: 100%;
     height: 100%;
   }
   
-  
   .container {
     font-size: 28px;
-    color: #fff;
+    color: #011f4b;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #282c34;
+    background-color: #005b96;
+    height: 80vh;
   }
   
   .loginForm {
@@ -66,5 +66,13 @@ body, html, #root, .app, .container {
    border-radius: 4px;
    background: #fff;
    cursor: pointer;
+  }
+
+  .main-footer{
+    margin-top: auto;
+    background-color: #6497b1
+  }
+  .main-header {
+    background-color: #6497b1
   }
 `;

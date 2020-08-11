@@ -65,9 +65,9 @@ class ContactForm extends React.Component {
             id="message"
             name="message"
             as="textarea"
-            rows="4"
+            rows="3"
             value={this.state.message}
-            onChange={this.handleChange}
+            onChange={(event) => this.handleSubmit(event)}
           ></Form.Control>
         </Form.Group>
 
