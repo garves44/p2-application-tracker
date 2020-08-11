@@ -4,7 +4,7 @@ const {
     Job,
     Resume,
     Interview,
-    Application
+    User
 } = require("../../models");
 
 // GET all interviews

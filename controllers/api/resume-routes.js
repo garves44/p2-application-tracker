@@ -3,7 +3,8 @@ const sequelize = require("../../config/connection");
 const {
     Job,
     Resume,
-    Interview
+    Interview,
+    User
 } = require("../../models");
 
 // GET all resumes

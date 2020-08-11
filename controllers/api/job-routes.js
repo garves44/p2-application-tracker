@@ -4,7 +4,7 @@ const {
     Job,
     Resume,
     Interview,
-    Application
+    User
 } = require("../../models");
 
 // GET all Jobs
@@ -67,7 +67,8 @@ router.get('/:id', (req, res) => {
 // POST new job
 router.post('/', (req, res) => {
     Job.create({
-        job_name: req.body.job_name
+        job_name: req.body.job_name,
+        user_id: req.session.user_id
     })
     .then(dbJobData => res.json(dbJobData))
     .catch(err => {
