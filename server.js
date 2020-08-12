@@ -6,11 +6,23 @@ const path = require("path");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
+/* ===============[ Sessions ]================================*/
+// We need to use sessions to keep track of our user's login status
+let cookieExpirationTime = new Date();
+let time = cookieExpirationTime.getTime();
+let seconds = process.env.EXPIRATION || 3600;
+
+time += seconds * 1000; // convert seconds to milliseconds
+cookieExpirationTime.setTime(time);
+
 const sess = {
-  secret: 'secret',
-  cookie: {},
+  secret: process.env.SESSION_SECRET || "secret",
   resave: false,
   saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    expires: cookieExpirationTime,
+  },
   store: new SequelizeStore({
     db: sequelize,
   }),
