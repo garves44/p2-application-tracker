@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
                 as: 'job',
                 include: [{
                     model: Resume,
-                    attribtues: ['id', 'resume_name', 'resume_link'],
+                    attributes: ['id', 'resume_name', 'resume_link'],
                     as: 'resume'
                 }]
             }

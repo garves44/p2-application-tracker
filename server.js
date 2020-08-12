@@ -7,7 +7,7 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const sess = {
-  secret: "secret",
+  secret: 'secret',
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -20,10 +20,10 @@ const app = express();
 const API_PORT = process.env.MYSQL_API_PORT || process.env.PORT || 3001;
 
 //================[Middleware]====================/
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
-app.use(session(sess));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve(__dirname, "views/build")));
