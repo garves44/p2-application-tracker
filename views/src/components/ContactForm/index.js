@@ -26,9 +26,7 @@ class ContactForm extends React.Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-
+  handleSubmit = () => {
     this.setState({
       disabled: true,
     });
@@ -44,7 +42,9 @@ class ContactForm extends React.Component {
             name="name"
             type="text"
             value={this.state.name}
-            onChange={this.handleChange}
+            onChange={(e) => {
+              e.preventDefault();
+            }}
           ></Form.Control>
         </Form.Group>
 

@@ -27,6 +27,7 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 1.2rem;
   transition: color 200ms;
+  color: var(--primary-menu-text);
 
   &:hover {
     color: var(--accent-color);
