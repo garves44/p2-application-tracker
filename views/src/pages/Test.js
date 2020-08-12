@@ -30,7 +30,7 @@ const Test = ({ history }) => {
       }
     };
 
-    if (isAuthenticated || true) {
+    if (isAuthenticated) {
       getTestRoute();
     }
   }, [getAccessTokenSilently, isAuthenticated, anything]);
