@@ -6,11 +6,23 @@ const path = require("path");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
+/* ===============[ Sessions ]================================*/
+// We need to use sessions to keep track of our user's login status
+let cookieExpirationTime = new Date();
+let time = cookieExpirationTime.getTime();
+let seconds = process.env.EXPIRATION || 3600;
+
+time += seconds * 1000; // convert seconds to milliseconds
+cookieExpirationTime.setTime(time);
+
 const sess = {
-  secret: "secret",
-  cookie: {},
+  secret: process.env.SESSION_SECRET || "secret",
   resave: false,
   saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    expires: cookieExpirationTime,
+  },
   store: new SequelizeStore({
     db: sequelize,
   }),
@@ -20,10 +32,10 @@ const app = express();
 const API_PORT = process.env.MYSQL_API_PORT || process.env.PORT || 3001;
 
 //================[Middleware]====================/
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
-app.use(session(sess));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve(__dirname, "views/build")));

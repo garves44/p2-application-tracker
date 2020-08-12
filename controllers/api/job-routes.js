@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
 
 // GET single job
 router.get('/:id', (req, res) => {
-    Job.findOne({
+   Job.findOne({
             where: {
                 id: req.params.id
             },

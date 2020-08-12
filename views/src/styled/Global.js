@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
 :root {
   --main-bg-color: #b3cde0;
   --primary-menu-text: #000;
+  --main-text-color: #fff; 
 }
 
 body {

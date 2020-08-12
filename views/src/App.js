@@ -6,9 +6,11 @@ import {
   Switch,
   useLocation,
 } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Styling
 import { GlobalStyle } from "./styled/Global";
+import Loader from "./styled/Loader";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/Header";
@@ -19,31 +21,40 @@ import Home from "./pages/Home";
 import notFound from "./pages/notFound";
 import Login from "./pages/Login";
 import Contact from "./pages/Contact";
-import Signup from "./pages/Signup";
+import Test from "./pages/Test";
 import Resume from "./pages/Resume";
 
 //Utilities
 import UserStore from "./store/UserStore";
 
 function App() {
+  const { loading } = useAuth0();
+
   return (
     <Router>
       <GlobalStyle />
-      <Header />
+      {loading ? (
+        <Loader>
+          <p>Loading...</p>
+        </Loader>
+      ) : (
+        <>
+          <Header />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/contact" component={Contact} />
+              <Route exact path="/test" component={Test} />
+              <Route exact path="/resume" component={Resume} />
 
-      <div className="container">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/resume" component={Resume} />
+              <Route path="*" component={notFound} />
+            </Switch>
+          </div>
 
-          <Route path="*" component={notFound} />
-        </Switch>
-      </div>
-
-      <Footer />
+          <Footer />
+        </>
+      )}
     </Router>
   );
 }
