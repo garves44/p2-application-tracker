@@ -34,12 +34,12 @@ const Footer = () => {
               </StyledAnchor>
             </li>
             <li>
-              <StyledAnchor href="https://www.linkedin.com/in/" target="_blank">
+              <StyledAnchor href="https://www.linkedin.com/in/taylor-remigi-7178281a5/" target="_blank">
                 <FontAwesomeIcon icon={faLinkedin} size="2x" /> Taylor Remigi
               </StyledAnchor>
             </li>
             <li>
-              <StyledAnchor href="https://www.linkedin.com/in/" target="_blank">
+              <StyledAnchor href="https://www.linkedin.com/in/mario-dubon-6a1081158/" target="_blank">
                 <FontAwesomeIcon icon={faLinkedin} size="2x" /> Mario Dubon
               </StyledAnchor>
             </li>
