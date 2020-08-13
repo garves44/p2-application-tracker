@@ -12,9 +12,9 @@ class User extends Model {
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
-
+// define user columns
 User.init({
-    // define id column
+
     id: {
        
         type: DataTypes.INTEGER,
@@ -25,7 +25,7 @@ User.init({
 
         autoIncrement: true
     },
-    // define an email column
+
     email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,7 +36,7 @@ User.init({
             isEmail: true
         }
     },
-    // define a token column
+
     last_used_token: {
         type: DataTypes.STRING,
         allowNull: false

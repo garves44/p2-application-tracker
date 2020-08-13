@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
-
+// create job model
 class Job extends Model {};
 
 const sequelize = require("../config/connection");
 
+// define job columns
 Job.init(
     {
         id: {

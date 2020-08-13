@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
-
+// create resume model
 class Resume extends Model {};
 
 const sequelize = require("../config/connection");
 
+// define resume columns
 Resume.init(
     {
         id: {

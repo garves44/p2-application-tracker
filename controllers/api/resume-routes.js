@@ -54,6 +54,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// create new resume
 router.post('/', (req, res) => {
     Resume.create({
         resume_name: req.body.resume_name,
@@ -66,6 +67,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// update resume
 router.put('/:id', (req, res) => {
     Resume.update({
         resume_name: req.body.resume_name,

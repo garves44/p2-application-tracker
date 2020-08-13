@@ -1,9 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 
+// create interview model
 class Interview extends Model {};
 
 const sequelize = require("../config/connection");
 
+// define interview columns
 Interview.init(
     {
         id: {
