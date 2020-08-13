@@ -25,12 +25,6 @@ User.init({
 
         autoIncrement: true
     },
-
-    // define a username column
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
     // define an email column
     email: {
         type: DataTypes.STRING,
@@ -42,14 +36,10 @@ User.init({
             isEmail: true
         }
     },
-   
-    password: {
+    // define a token column
+    last_used_token: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-           
-            len: [4]
-        }
+        allowNull: false
     }
 
 }, {
