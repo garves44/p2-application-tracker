@@ -6,7 +6,7 @@ const Home = () => {
     <div>
       <Hero
         title="Welcome"
-        text="Sign up and login! Keep track of the progress on jobs your applying for."
+        text="Sign up and login! Keep track of the progress on jobs you're applying for."
       ></Hero>
     </div>
   );

@@ -25,51 +25,59 @@ You and your group will use everything you’ve learned over the past six weeks 
 
 ## **APPLICATION LINKS**
 
-> [Live Application]()  
+> [Live Application](https://p2-job-application-tracker.herokuapp.com/)  
 > [GitHub Repository](https://github.com/garves44/p2-application-tracker)  
-> [Presentation Slides]()
+> [Presentation Slides](https://docs.google.com/presentation/d/1hgC7387HLUdP7TD7Kfnle3xXlocmADyCFriz1uhj3ZM/edit?usp=sharing)
 
 ## **CONTRIBUTORS**
 
 |               Mario Dubon               |             Taylor Remigi             |                          Jeremy Collins                           |
 | :-------------------------------------: | :-----------------------------------: | :---------------------------------------------------------------: |
-|                   <>                    |                  <>                   |                       <garves44@gmail.com>                        |
+|                   <>                    |         <tayremigi@gmail.com>         |                       <garves44@gmail.com>                        |
 | [github](https://github.com/mdubon1407) | [github](https://github.com/TRemigi)  |               [github](https://github.com/garves44)               |
-|  [LinkedIn](https://www.linkedin.com/)  | [LinkedIn](https://www.linkedin.com/) | [LinkedIn](https://www.linkedin.com/in/jeremy-collins-209545194/) |
+|  [LinkedIn](https://www.linkedin.com/in/mario-dubon-6a1081158/)  | [LinkedIn](https://www.linkedin.com/in/taylor-remigi-7178281a5/) | [LinkedIn](https://www.linkedin.com/in/jeremy-collins-209545194/) |
 
 ## **DEVELOPMENT**
 
 This application was developed with the following application structures:
 
 1. REACT
-2.
-3.
-4.
-5.
-6.
-7.
+2. JAVASCRIPT
+3. MYSQL
+4. EXPRESS
+5. SEQUELIZE
+6. BOOTSTRAP
+7. CSS
 
 ---
 
 ## **USER STORY**
 
-> AS A  
-> I WANT
-> SO THAT
+> AS A person searching for a job
+> I WANT a clutter-free organization application
+> SO THAT I can keep track of my resumes, jobs i wish to apply for, have applied for, and have interviews with
 
 ## **ACCEPTANCE CRITERIA**
 
-> GIVEN  
-> WHEN
-> THEN
-> WHEN  
-> THEN  
-> WHEN
-> THEN
-> WHEN  
-> THEN  
-> When  
-> THEN
+> GIVEN a job application organization app,
+> WHEN I open the web page,
+> THEN I am greeted with a welcome page instructing me to log in or sign up.
+> WHEN I click on the 'Log In' button in the menu bar,
+> THEN I am taken to a log in page with a form to log in or sign up.
+> WHEN I log in or sign up,
+> THEN my user credentials are saved and persist upon closing the application.
+> WHEN I click on the toolbox icon in the menu bar,
+> THEN I am taken to a dashboard displaying jobs I need to apply for, am waiting for a response from, and have interviews scheduled with.
+> When I click on the 'Add Job' button on the dashboard page,
+> THEN I am presented with a form to enter a new job title.
+> When I enter a new job title,
+> THEN It is added to the 'Need to Apply' column on the dashboard.
+> When I have applied for a job,
+> THEN I can move that job into the 'Waiting on Response' column on the dashboard.
+> When I have an interview scheduled with a job,
+> THEN I can move it to the 'Interview Scheduled' column on the dashboard.
+> When A job is in the 'Interview Scheduled' column,
+> THEN the interview date is displayed along with the job title.
 
 ## **PROJECT REQUIREMENTS**
 
