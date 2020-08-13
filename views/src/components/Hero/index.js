@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = (props) => {
   return (
-    <jumbotron className="">
+    <div className="">
       <div className="row text-center py-5">
         <div className="col">
           {props.title && (
@@ -16,7 +16,7 @@ const Hero = (props) => {
           )}
         </div>
       </div>
-    </jumbotron>
+    </div>
   );
 };
 

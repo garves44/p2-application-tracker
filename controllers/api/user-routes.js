@@ -94,42 +94,54 @@ router.post("/", (req, res) => {
 // /api/users/login
 router.post("/login", (req, res) => {
   // expects {email: 'email@place.com', password: 'password1234'}
-  res.status(200).json(req.body);
-
-  /* 
+  // res.status(200).json(req.body);
+  console.log("THIS IS THE REQ BODY", req.body);
   User.findOne({
     where: {
       email: req.body.email,
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({
-        message: "No user with that email address.",
-      });
+      // res.status(400).json({
+      //   message: "No user with that email address.",
+      // });
+      User.create({
+        email: req.body.email,
+        last_used_token: req.body.token,
+      })
+        .then((dbUserData) => {
+          req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json(dbUserData);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+        });
       return;
     }
 
-    // verify user
-    const validPassword = dbUserData.checkPassword(req.body.password);
-    if (!validPassword) {
-      res.status(400).json({
-        message: "Incorrect password!",
-      });
-      return;
-    }
+    // // verify user
+    // const validPassword = dbUserData.checkPassword(req.body.password);
+    // if (!validPassword) {
+    //   res.status(400).json({
+    //     message: "Incorrect password!",
+    //   });
+    //   return;
+    // }
 
     req.session.save(() => {
       // declare session variables
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-      res.json({
-        user: dbUserData,
-        message: "You are now logged in.",
-      });
+      res.json(dbUserData);
     });
   });
-  */
 });
 
 /*
