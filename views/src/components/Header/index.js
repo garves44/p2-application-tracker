@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import API from "../../utils/API";
+import { useUserData } from "../../contexts/AuthContext";
 
 import {
   StyledNavbar,
@@ -10,12 +12,13 @@ import {
 
 //FontAwesome imported
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faBug } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 import { StyledButtonLink, StyledButton } from "../../styled/Buttons";
 
 export default function Header() {
   const { user, isAuthenticated, logout, loginWithRedirect } = useAuth0();
+  const [userData, setUserData] = useUserData();
 
   return (
     <div className="main-header">
@@ -27,8 +30,8 @@ export default function Header() {
           {isAuthenticated ? (
             <>
               <li>
-                <StyledLink to="/test">
-                  <FontAwesomeIcon icon={faBug} size="1x" />
+                <StyledLink to="/jobs">
+                  <FontAwesomeIcon icon={faBriefcase} size="1x" />
                 </StyledLink>
               </li>
               <li>
@@ -53,7 +56,11 @@ export default function Header() {
                 </StyledLink>
               </li>
               <li>
-                <StyledButtonLink onClick={() => loginWithRedirect()}>
+                <StyledButtonLink
+                  onClick={async () => {
+                    await loginWithRedirect();
+                  }}
+                >
                   Log In
                 </StyledButtonLink>
               </li>

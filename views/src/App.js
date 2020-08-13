@@ -23,6 +23,7 @@ import Login from "./pages/Login";
 import Contact from "./pages/Contact";
 import Test from "./pages/Test";
 import Resume from "./pages/Resume";
+import Jobs from "./pages/Jobs";
 
 //Utilities
 import UserStore from "./store/UserStore";
@@ -43,6 +44,7 @@ function App() {
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/jobs" component={Jobs} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/test" component={Test} />
