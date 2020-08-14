@@ -107,7 +107,7 @@ router.post("/login", (req, res) => {
       // });
       User.create({
         email: req.body.email,
-        last_used_token: req.body.token,
+        last_used_token: req.body.last_used_token,
       })
         .then((dbUserData) => {
           req.session.save(() => {
@@ -133,6 +133,8 @@ router.post("/login", (req, res) => {
     //   });
     //   return;
     // }
+
+    console.log("ALREADY EXISTS!!!!");
 
     req.session.save(() => {
       // declare session variables

@@ -6,4 +6,5 @@ export default {
 
   //Job Controllers
   addJob: (jobData) => axios.post("/api/jobs/", jobData),
+  getUserJobs: () => axios.get("/api/jobs/user"),
 };
