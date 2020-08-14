@@ -32,7 +32,7 @@ function App() {
   const { loading } = useAuth0();
 
   return (
-    <Router>
+    <Router baseName={window.location.pathname || ""}>
       <GlobalStyle />
       {loading ? (
         <Loader>
