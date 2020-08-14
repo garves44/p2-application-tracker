@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+// import AuthContext from "../contexts/AuthContext";
 import { useUserData } from "../contexts/AuthContext";
 import { createTestAccount } from "nodemailer";
 
 const Test = ({ history }) => {
-  const [userData, setUserData] = useUserData();
+  const { userData, setUserData } = useUserData();
+  // const { userData, setUserData } = useContext(AuthContext);
+
   const [testData, setTestData] = useState({});
 
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();

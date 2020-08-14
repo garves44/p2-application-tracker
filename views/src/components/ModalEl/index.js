@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+// import AuthContext from "../../contexts/AuthContext";
+import { useUserData } from "../../contexts/AuthContext";
 import Moment from "react-moment";
 import Modal from "react-modal";
 import Form from "react-bootstrap/Form";
 import API from "../../utils/API";
 import Utils from "../../utils";
-import { useUserData } from "../../contexts/AuthContext";
 
-const ModalEl = () => {
-  const [userData, setUserData] = useUserData();
+const ModalEl = ({ reload_jobs, set_reload }) => {
+  const { userData, setUserData } = useUserData();
+  // const { userData } = useContext(AuthContext);
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [jobData, setJobData] = useState({
     job_name: "",
@@ -30,6 +33,15 @@ const ModalEl = () => {
     }
     return false;
   };
+
+  useEffect(() => {
+    if (modalIsOpen === false) {
+      reload_jobs = true;
+    } else {
+      reload_jobs = false;
+    }
+    set_reload(reload_jobs);
+  }, [modalIsOpen]);
 
   return (
     <div>

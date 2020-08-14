@@ -26,13 +26,28 @@ const droppableStyle = {
 };
 
 export default class DnD extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("props", props);
+  }
+
   render() {
     return (
       <Wrapper>
         <Droppable title="Need to Apply" id="apply" style={droppableStyle}>
-          <Draggable id="item-1">
-            <Item>Some Text</Item>
-          </Draggable>
+          {this.props.jobs.length > 0 ? (
+            this.props.jobs.map((job, index) => {
+              return (
+                <Draggable id={`item-${index}`} key={index}>
+                  <Item>{job}</Item>
+                </Draggable>
+              );
+            })
+          ) : (
+            <Draggable id="item-1">
+              <Item>No Jobs</Item>
+            </Draggable>
+          )}
         </Droppable>
         <Droppable
           title="Waiting on Response"

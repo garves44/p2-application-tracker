@@ -2,21 +2,89 @@ const router = require("express").Router();
 const sequelize = require("../../config/connection");
 const { Job, Resume, Interview, User } = require("../../models");
 
-// GET all Jobs
+// GET all Jobs /api/jobs/
 router.get("/", (req, res) => {
   Job.findAll({
     attributes: ["id", "job_name", "applied"],
     include: [
       {
         model: User,
-        attributes: ["id", "username", "email"],
+        attributes: ["id", "email"],
         as: "user",
       },
+      // {
+      //   model: Resume,
+      //   attributes: ["id", "resume_name", "resume_link"],
+      //   as: "resume",
+      // },
       {
-        model: Resume,
-        attributes: ["id", "resume_name", "resume_link"],
-        as: "resume",
+        model: Interview,
+        attributes: ["id", "interview_date"],
+        as: "interview",
       },
+    ],
+  })
+    .then((dbJobData) => res.json(dbJobData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// GET all Jobs /api/jobs/user/:user_id
+router.get("/user/:user_id", (req, res) => {
+  console.log("GET USERS JOBS PARAM", req.params.user_id);
+
+  Job.findAll({
+    where: {
+      user_id: req.params.user_id,
+    },
+    attributes: ["id", "job_name", "applied"],
+    include: [
+      {
+        model: User,
+        attributes: ["id", "email"],
+        as: "user",
+      },
+      // {
+      //   model: Resume,
+      //   attributes: ["id", "resume_name", "resume_link"],
+      //   as: "resume",
+      // },
+      {
+        model: Interview,
+        attributes: ["id", "interview_date"],
+        as: "interview",
+      },
+    ],
+  })
+    .then((dbJobData) => res.json(dbJobData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// GET all Jobs /api/jobs/user/
+router.get("/user/", (req, res) => {
+  console.log("GET USERS JOBS SESSION", req.session.user_id);
+
+  Job.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+    attributes: ["id", "job_name", "applied"],
+    include: [
+      {
+        model: User,
+        attributes: ["id", "email"],
+        as: "user",
+      },
+      // {
+      //   model: Resume,
+      //   attributes: ["id", "resume_name", "resume_link"],
+      //   as: "resume",
+      // },
       {
         model: Interview,
         attributes: ["id", "interview_date"],
@@ -41,14 +109,14 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["id", "username", "email"],
+        attributes: ["id", "email"],
         as: "user",
       },
-      {
-        model: Resume,
-        attributes: ["id", "resume_name", "resume_link"],
-        as: "resume",
-      },
+      // {
+      //   model: Resume,
+      //   attributes: ["id", "resume_name", "resume_link"],
+      //   as: "resume",
+      // },
       {
         model: Interview,
         attributes: ["id", "interview_date"],
@@ -75,7 +143,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   Job.create({
     job_name: req.body.job_name,
-    email: req.session.email,
+    user_id: req.session.user_id,
   })
     .then((dbJobData) => res.json(dbJobData))
     .catch((err) => {
@@ -94,7 +162,7 @@ router.put("/:id", (req, res) => {
       where: {
         id: req.params.id,
       },
-    }
+    },
   )
     .then((dbJobData) => {
       if (!dbJobData) {
@@ -111,6 +179,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
+/*
 // Add resume to job
 router.put("/:id/resume", (req, res) => {
   Job.update(
@@ -121,7 +190,7 @@ router.put("/:id/resume", (req, res) => {
       where: {
         id: req.params.id,
       },
-    }
+    },
   )
     .then((dbJobData) => res.json(dbJobData))
     .catch((err) => {
@@ -129,6 +198,7 @@ router.put("/:id/resume", (req, res) => {
       res.status(500).json(err);
     });
 });
+*/
 
 // DELETE job
 router.delete("/:id", (req, res) => {
