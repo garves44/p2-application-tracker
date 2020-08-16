@@ -28,8 +28,6 @@ const Login = ({ history }) => {
     console.log("responseText", responseText);
     console.log("data", data);
     setDebugData(data);
-
-    // history.push("/");
   };
 
   // ===============[ Validate Form ]===========================

@@ -12,11 +12,6 @@ router.get("/", (req, res) => {
         attributes: ["id", "email"],
         as: "user",
       },
-      // {
-      //   model: Resume,
-      //   attributes: ["id", "resume_name", "resume_link"],
-      //   as: "resume",
-      // },
       {
         model: Interview,
         attributes: ["id", "interview_date"],
@@ -46,11 +41,6 @@ router.get("/user/:user_id", (req, res) => {
         attributes: ["id", "email"],
         as: "user",
       },
-      // {
-      //   model: Resume,
-      //   attributes: ["id", "resume_name", "resume_link"],
-      //   as: "resume",
-      // },
       {
         model: Interview,
         attributes: ["id", "interview_date"],
@@ -80,11 +70,6 @@ router.get("/user/", (req, res) => {
         attributes: ["id", "email"],
         as: "user",
       },
-      // {
-      //   model: Resume,
-      //   attributes: ["id", "resume_name", "resume_link"],
-      //   as: "resume",
-      // },
       {
         model: Interview,
         attributes: ["id", "interview_date"],
@@ -112,11 +97,6 @@ router.get("/:id", (req, res) => {
         attributes: ["id", "email"],
         as: "user",
       },
-      // {
-      //   model: Resume,
-      //   attributes: ["id", "resume_name", "resume_link"],
-      //   as: "resume",
-      // },
       {
         model: Interview,
         attributes: ["id", "interview_date"],
@@ -178,27 +158,6 @@ router.put("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-/*
-// Add resume to job
-router.put("/:id/resume", (req, res) => {
-  Job.update(
-    {
-      resume_id: req.body.resume_id,
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    },
-  )
-    .then((dbJobData) => res.json(dbJobData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-*/
 
 // DELETE job
 router.delete("/:id", (req, res) => {

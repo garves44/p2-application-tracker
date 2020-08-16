@@ -11,33 +11,7 @@ const Test = ({ history }) => {
   const [testData, setTestData] = useState({});
 
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
-
-  // useEffect(() => {
-  //   const getTestRoute = async () => {
-  //     try {
-  //       const token = await getAccessTokenSilently();
-  //       const options = {
-  //         method: "GET",
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       };
-
-  //       const res = await fetch("/api/test", options);
-  //       const data = await res.json();
-
-  //       setTestData(data);
-  //       setAnything({ token: token });
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
-
-  //   if (isAuthenticated) {
-  //     getTestRoute();
-  //   }
-  // }, [getAccessTokenSilently, isAuthenticated, anything]);
-
+  
   return (
     <div>
       {!isAuthenticated && <h2>You should log in!</h2>}

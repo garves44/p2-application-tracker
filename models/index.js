@@ -6,13 +6,6 @@ const User = require("./User");
 
 //================[Associations]=================/
 
-// Resume.hasMany(Job, {
-//   foreignKey: 'resume_id'
-// });
-
-// Job.belongsTo(Resume, {
-//   foreignKey: 'resume_id'
-// });
 
 Job.hasOne(Interview, {
   foreignKey: "job_id",
