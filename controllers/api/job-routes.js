@@ -41,11 +41,6 @@ router.get("/user/:user_id", (req, res) => {
         attributes: ["id", "email"],
         as: "user",
       },
-      // {
-      //   model: Resume,
-      //   attributes: ["id", "resume_name", "resume_link"],
-      //   as: "resume",
-      // },
       {
         model: Interview,
         attributes: ["id", "interview_date"],
