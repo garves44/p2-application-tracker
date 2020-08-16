@@ -159,27 +159,6 @@ router.put("/:id", (req, res) => {
     });
 });
 
-/*
-// Add resume to job
-router.put("/:id/resume", (req, res) => {
-  Job.update(
-    {
-      resume_id: req.body.resume_id,
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    },
-  )
-    .then((dbJobData) => res.json(dbJobData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-*/
-
 // DELETE job
 router.delete("/:id", (req, res) => {
   Job.destroy({
