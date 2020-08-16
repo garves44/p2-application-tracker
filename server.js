@@ -31,7 +31,7 @@ const sess = {
 const app = express();
 const API_PORT = process.env.MYSQL_API_PORT || process.env.PORT || 3001;
 
-//================[Middleware]====================/
+//================[Middleware]===================/
 app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
