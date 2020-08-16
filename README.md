@@ -1,4 +1,5 @@
 # <div align="center">**Application Tracker**</div>
+<img src="./assets/images/apptracker.png" />
 
 ## **PROJECT DESCRIPTION**
 
@@ -76,8 +77,6 @@ This application was developed with the following application structures:
 > THEN I can move that job into the 'Waiting on Response' column on the dashboard.
 > When I have an interview scheduled with a job,
 > THEN I can move it to the 'Interview Scheduled' column on the dashboard.
-> When A job is in the 'Interview Scheduled' column,
-> THEN the interview date is displayed along with the job title.
 
 ## **PROJECT REQUIREMENTS**
 
@@ -156,9 +155,8 @@ You and your group will give a 10-minute presentation on your project, with abou
 ---
 
 ## **USAGE**
-
->
-
-## **FUNCTIONALITY**
-
-1.
+> Click "Log In" button in menu bar.
+> Log in or create a new account.
+> Click briefcase icon in menu bar.
+> Click "Add Job" button above dashboard columns to add a new job.
+> Drag and drop jobs between appropriate columns.
