@@ -20,7 +20,6 @@ You and your group will use everything you’ve learned over the past six weeks 
 [10. PRESENTATION REQUIREMENTS](#PRESENTATION-REQUIREMENTS)  
 [11. GRADING REQUIREMENTS](#GRADING-REQUIREMENTS)  
 [12. USAGE](#USAGE)  
-[13. FUNCTIONALITY](#FUNCTIONALITY)
 
 ---
 
