@@ -33,8 +33,8 @@ export default class DnD extends React.Component {
 
   render() {
     return (
-      <Wrapper>
-        <Droppable title="Need to Apply" id="apply" style={droppableStyle}>
+      <Wrapper className="row">
+        <Droppable className="col-12 col-md-3" title="Need to Apply" id="apply" style={droppableStyle}>
           {this.props.jobs.length > 0 ? (
             this.props.jobs.map((job, index) => {
               return (

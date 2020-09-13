@@ -30,7 +30,7 @@ const Jobs = () => {
   }, [reload]);
 
   return (
-    <div>
+    <div className="container-fluid">
       <ModalEl reload_jobs={reload} set_reload={setReload} />
       <DnD jobs={myJobs}></DnD>
     </div>
