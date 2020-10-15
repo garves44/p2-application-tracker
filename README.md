@@ -33,7 +33,7 @@ You and your group will use everything you’ve learned over the past six weeks 
 
 |               Mario Dubon               |             Taylor Remigi             |                          Jeremy Collins                           |
 | :-------------------------------------: | :-----------------------------------: | :---------------------------------------------------------------: |
-|                   <>                    |         <tayremigi@gmail.com>         |                       <garves44@gmail.com>                        |
+|                   <mdubon1407@gmail.com>                    |         <tayremigi@gmail.com>         |                       <garves44@gmail.com>                        |
 | [github](https://github.com/mdubon1407) | [github](https://github.com/TRemigi)  |               [github](https://github.com/garves44)               |
 |  [LinkedIn](https://www.linkedin.com/in/mario-dubon-6a1081158/)  | [LinkedIn](https://www.linkedin.com/in/taylor-remigi-7178281a5/) | [LinkedIn](https://www.linkedin.com/in/jeremy-collins-209545194/) |
 
